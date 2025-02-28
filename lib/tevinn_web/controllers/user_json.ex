@@ -1,4 +1,5 @@
 defmodule TevinnWeb.UserJSON do
+  alias TevinnWeb.PostJSON
   alias Tevinn.Accounts.User
 
   @doc """
@@ -15,11 +16,20 @@ defmodule TevinnWeb.UserJSON do
     %{data: data(user)}
   end
 
-  defp data(%User{} = user) do
+  def data(%User{} = user) do
     %{
       id: user.id,
       name: user.name,
-      email: user.email
+      email: user.email,
+      posts: Enum.map(user.posts, &PostJSON.data/1)
     }
   end
+
+  #defp post_data(%Post{} = post) do
+    #%{
+     # id: post.id,
+      #title: post.title,
+      #body: post.body
+    #}
+  #end
 end

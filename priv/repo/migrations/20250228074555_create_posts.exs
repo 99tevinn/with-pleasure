@@ -9,4 +9,5 @@ defmodule Tevinn.Repo.Migrations.CreatePosts do
       timestamps(type: :utc_datetime)
     end
   end
+
 end

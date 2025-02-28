@@ -5,6 +5,7 @@ defmodule Tevinn.Accounts.User do
   schema "users" do
     field :name, :string
     field :email, :string
+    has_many :posts, Tevinn.Posts.Post
 
     timestamps(type: :utc_datetime)
   end
