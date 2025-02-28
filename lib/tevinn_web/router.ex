@@ -18,8 +18,14 @@ defmodule TevinnWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    get "/users", PageController, :users
   end
 
+  scope "/api", TevinnWeb do
+    pipe_through :api
+    resources "/posts", PostController, except: [:new, :edit]
+    resources "/users", UserController, except: [:new, :edit]
+  end
   # Other scopes may use custom stacks.
   # scope "/api", TevinnWeb do
   #   pipe_through :api
